@@ -1,7 +1,8 @@
 
 const game = ()=> {
     
-    const music = new Audio("../audio/Snake Eater.mp3");
+    const music = new Audio();
+    music.src = "../audio/Snake Eater.mp3";
     const startBtn = document.getElementById('startBtn');
     const introScreen = document.querySelector('.intro');
     const gameScreen = document.querySelector('.gameplay');
