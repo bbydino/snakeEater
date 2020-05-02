@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="snake.css" />
+    <title>snake eater</title>
+</head>
+<body>
+    <section class="game">
+        <div class="intro fadeIn">
+            <div class="title">
+                <h1>SNAKE EATERRRRRRRRRR</h1>
+            </div>
+            <div class="options">
+                <h1>Options</h1>
+                <div class="difficulty-op">
+                    <label for="sound">Difficulty</label>
+                    <select id="difficulty">
+                        <option value="veryeasy">Uber Easy</option>
+                        <option value="easy">Easy</option>
+                        <option value="normal" selected>Normal</option>
+                        <option value="hard">Hard</option>
+                        <option value="impossible">FWEEKIN IMPOSSIBLE</option>
+                    </select>
+                </div>
+                <br>
+                <div class="sound-op">
+                    <label for="sound">Sound</label>
+                    <input type="radio" name="sound" id="sound-on">ON</input>
+                    <input type="radio" name="sound" id="sound-off">OFF</input>
+                </div>
+                <div class="music-op">
+                    <label for="music">Music</label>
+                    <input type="radio" name="music" id="music-on">ON</input>
+                    <input type="radio" name="music" id="music-off">OFF</input>
+                </div>
+                <div class="buttons">
+                    <button>???</button>
+                    <button id="startBtn">START</button>
+                </div>
+            </div>
+        </div>
+        <div class="gameplay fadeOut">
+            <canvas id="snake" width="608" height="608"></canvas>
+            <script src="snake.js"></script>
+        </div>
+    </div>
+</body>
+</html>
