@@ -1,7 +1,7 @@
 
 const game = ()=> {
     
-    const music = new Audio("./audio/Snake Eater.mp3");
+    const music = new Audio("../audio/Snake Eater.mp3");
     const startBtn = document.getElementById('startBtn');
     const introScreen = document.querySelector('.intro');
     const gameScreen = document.querySelector('.gameplay');
@@ -10,8 +10,8 @@ const game = ()=> {
     // load the images. The background, and the food
     const ground = new Image();
     const foodImg = new Image();
-    ground.src = "./img/ground.png";
-    foodImg.src = "./img/food.png";
+    ground.src = "../img/ground.png";
+    foodImg.src = "../img/food.png";
     // Load the audio files.
     const dead = new Audio();
     const eat = new Audio();
@@ -19,12 +19,12 @@ const game = ()=> {
     const left = new Audio();
     const right = new Audio();
     const down = new Audio();
-    dead.src = "./audio/oof.mp3";
-    eat.src = "./audio/eat.mp3";
-    up.src = "./audio/up.mp3";
-    left.src = "./audio/left.mp3";
-    right.src = "./audio/right.mp3";
-    down.src = "./audio/down.mp3";
+    dead.src = "../audio/oof.mp3";
+    eat.src = "../audio/eat.mp3";
+    up.src = "../audio/up.mp3";
+    left.src = "../audio/left.mp3";
+    right.src = "../audio/right.mp3";
+    down.src = "../audio/down.mp3";
 
     // the render speed, the smaller the harder. Default 90 
     var DIFFICULTY = 90;

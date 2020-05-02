@@ -1,18 +1,18 @@
 @font-face {
   font-family: "MGS1";
-  src: url("./fonts/METAG___.TTF");
+  src: url("../fonts/METAG___.TTF");
 }
 @font-face {
   font-family: "MGS2";
-  src: url("./fonts/MGS2.ttf");
+  src: url("../fonts/MGS2.ttf");
 }
 @font-face {
   font-family: "MGS3";
-  src: url("./fonts/MGS2MENU.TTF");
+  src: url("../fonts/MGS2MENU.TTF");
 }
 @font-face {
   font-family: "MGS4";
-  src: url("./fonts/Tactical\ Espionage\ Action.ttf");
+  src: url("../fonts/Tactical\ Espionage\ Action.ttf");
 }
 
 * {
