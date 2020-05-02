@@ -1,4 +1,4 @@
-# snakeGame
+# snakeEater
 dngo's snake game made with vanilla javascript
 
 WASSUP!!!
