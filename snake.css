@@ -23,27 +23,12 @@
 
 section {
   height: 100vh;
-  background-color: rgb(102, 102, 102);
+  background-color: rgb(41, 41, 41);
   font-family: sans-serif;
 }
 
-.title h1 {
-  font-family: MGS1, sans-serif;
-  font-size: 50px;
-  color: #cf5656;
-  text-shadow: 2px 2px black;
-  transition: opacity .5s ease;
-  padding: 5%;
-}
-
-.options {
-  font-family: MGS2, sans-serif;
-  text-align: center;
-  font-size: large;
-}
-
 .intro {
-  height: 50vh;
+  height: 60vh;
   font-family: MGS2, sans-serif;
   text-align: center;
   display: flex;
@@ -52,7 +37,8 @@ section {
   justify-content: space-around;
   transition: opacity .5s ease;
 }
-.intro button,
+
+.buttons button,
 .intro select {
   width: 200px;
   height: 30px;
@@ -63,6 +49,31 @@ section {
   border-radius: 100px;
   cursor: pointer;
   background: rgb(63, 55, 55);
+}
+
+.title h1 {
+  font-family: MGS1, sans-serif;
+  font-size: 50px;
+  color: #cf5656;
+  text-shadow: 2px 2px black;
+  transition: all 2s ease;
+  padding: 5%;
+}
+
+.how-to-play {
+  padding-bottom: 5%;
+}
+
+.how-to-play p {
+  font-family: MGS2, sans-serif;
+  text-align: center;
+  font-size: large;
+}
+
+.options {
+  font-family: MGS2, sans-serif;
+  text-align: center;
+  font-size: large;
 }
 
 .gameplay {

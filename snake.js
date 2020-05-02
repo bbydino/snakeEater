@@ -4,6 +4,7 @@ const game = ()=> {
     const music = new Audio();
     music.src = "./audio/Snake Eater.mp3";
     const startBtn = document.getElementById('startBtn');
+    const instructBtn = document.getElementById('instructBtn');
     const introScreen = document.querySelector('.intro');
     const gameScreen = document.querySelector('.gameplay');
 
@@ -27,17 +28,23 @@ const game = ()=> {
     right.src = "./audio/right.mp3";
     down.src = "./audio/down.mp3";
 
+    // Every key on the keyboard has a specific code
+    let keys = {
+        KEY_LEFT: [37, 65],
+        KEY_UP: [38, 87],
+        KEY_RIGHT: [39, 68],
+        KEY_DOWN: [40, 83]
+    }
+
     // the render speed, the smaller the harder. Default 90 
     var DIFFICULTY = 90;
 
     // Each difficulty will have a high score
-    var highScores = [
-
-    ];
-
+    var highScores = [0, 0, 0, 0];
 
     startBtn.addEventListener('click', ()=>{
-        let difficulty  = document.getElementById('difficulty').options.selectedIndex;
+        // Set the difficulty based on the selector
+        let difficulty = document.getElementById('difficulty').options.selectedIndex;
         if (difficulty===0) DIFFICULTY = 200;
         else if (difficulty===1) DIFFICULTY = 130;
         else if (difficulty===2) DIFFICULTY = 90;
@@ -57,11 +64,6 @@ const game = ()=> {
         const cvs = document.getElementById("snake");
         const ctx = cvs.getContext("2d");
     
-        // Every key on the keyboard has a specific code
-        const KEY_LEFT = 37;
-        const KEY_UP = 38;
-        const KEY_RIGHT = 39;
-        const KEY_DOWN = 40;
         // Our grid is 17 by 15. On our grid, each box is 32 pixels
         const GRID_X = 17;
         const GRID_Y = 15;
@@ -85,20 +87,20 @@ const game = ()=> {
     
         // snake cannot go in the opposite direction
         document.addEventListener("keydown", event=>{
-            let key = event.keyCode;
-            if (key === KEY_LEFT && d != "RIGHT") {
+            let lastKey = event.keyCode;
+            if (keys.KEY_LEFT.indexOf(lastKey)>=0 && d != "RIGHT") {
                 d = "LEFT";
                 left.play();
             }
-            else if (key === KEY_UP && d != "DOWN") {
+            else if (keys.KEY_UP.indexOf(lastKey)>=0 && d != "DOWN") {
                 d = "UP";
                 up.play();
             }
-            else if (key === KEY_RIGHT && d != "LEFT") {
+            else if (keys.KEY_RIGHT.indexOf(lastKey)>=0 && d != "LEFT") {
                 d = "RIGHT";
                 right.play();
             }
-            else if (key === KEY_DOWN && d != "UP") {
+            else if (keys.KEY_DOWN.indexOf(lastKey)>=0 && d != "UP") {
                 d = "DOWN";
                 down.play();
             }
