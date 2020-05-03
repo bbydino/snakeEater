@@ -31,18 +31,25 @@
                     </select>
                 </div>
                 <br>
-                <div class="sound-op">
-                    <label for="sound">Sound</label>
-                    <input type="radio" name="sound" id="sound-on">ON</input>
-                    <input type="radio" name="sound" id="sound-off">OFF</input>
-                </div>
-                <div class="music-op">
-                    <label for="music">Music</label>
-                    <input type="radio" name="music" id="music-on">ON</input>
-                    <input type="radio" name="music" id="music-off">OFF</input>
+                <div class="switches">
+                    <h1>Sound</h1>
+                    <div class="sound-op">
+                        <label class="op-label">SFX</label>
+                        <label class="switch">
+                            <input id="sfx-switch" type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="music-op">
+                        <label class="op-label">MUSIC</label>
+                        <label class="switch">
+                            <input id="music-switch" type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
                 </div>
                 <div class="buttons">
-                    <button>???</button>
+                    <button id="mysteryBtn">???</button>
                     <button id="startBtn">START</button>
                 </div>
             </div>

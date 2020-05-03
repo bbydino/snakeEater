@@ -1,12 +1,12 @@
 
 const game = ()=> {
     
-    const music = new Audio();
-    music.src = "./audio/Snake Eater.mp3";
+    
     const startBtn = document.getElementById('startBtn');
-    const instructBtn = document.getElementById('instructBtn');
     const introScreen = document.querySelector('.intro');
     const gameScreen = document.querySelector('.gameplay');
+    const musicBtn = document.getElementById('music-switch');
+    const sfxBtn = document.getElementById('sfx-switch');
 
     // lOAD IMAGES AND SOUNDS ONCE. NOT EACH TIME WE START NEW GAME
     // load the images. The background, and the food
@@ -15,12 +15,14 @@ const game = ()=> {
     ground.src = "./img/ground.png";
     foodImg.src = "./img/food.png";
     // Load the audio files.
+    const music = new Audio();
     const dead = new Audio();
     const eat = new Audio();
     const up = new Audio();
     const left = new Audio();
     const right = new Audio();
     const down = new Audio();
+    music.src = "./audio/Snake Eater.mp3"
     dead.src = "./audio/oof.mp3";
     eat.src = "./audio/eat.mp3";
     up.src = "./audio/up.mp3";
@@ -41,8 +43,42 @@ const game = ()=> {
 
     // Each difficulty will have a high score
     var highScores = [0, 0, 0, 0];
+    
+    // Play/Pause music/sfx according to switch. Default is music/sfx ON.
+    musicBtn.addEventListener('click', ()=> {
+        if (musicBtn.checked == false) music.src = "";
+        else music.src = "./audio/Snake Eater.mp3"
+    });
+    sfxBtn.addEventListener('click', ()=> {
+        if (sfxBtn.checked == false) {
+            dead.src = "";
+            eat.src = "";
+            up.src = "";
+            left.src = "";
+            right.src = "";
+            down.src = "";
+        }
+        else {
+            dead.src = "./audio/oof.mp3";
+            eat.src = "./audio/eat.mp3";
+            up.src = "./audio/up.mp3";
+            left.src = "./audio/left.mp3";
+            right.src = "./audio/right.mp3";
+            down.src = "./audio/down.mp3";
+        }
+    });
 
     startBtn.addEventListener('click', ()=>{
+        preGamePrep();
+
+        introScreen.classList.add('fadeOut');
+        gameScreen.classList.add('fadeIn');
+        music.play();
+
+        startGame();
+    });
+
+    function preGamePrep() {
         // Set the difficulty based on the selector
         let difficulty = document.getElementById('difficulty').options.selectedIndex;
         if (difficulty===0) DIFFICULTY = 200;
@@ -51,12 +87,8 @@ const game = ()=> {
         else if (difficulty===3) DIFFICULTY = 70;
         else if (difficulty===4) DIFFICULTY = 50;
 
-        introScreen.classList.add('fadeOut');
-        gameScreen.classList.add('fadeIn');
-        music.play();
-
-        startGame();
-    });
+        
+    }
 
     // EACH TIME WE CLICK THE START BUTTON, THIS IS CALLED!
     function startGame() {
