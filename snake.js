@@ -1,19 +1,20 @@
 
 const game = ()=> {
     
-    
     const startBtn = document.getElementById('startBtn');
     const introScreen = document.querySelector('.intro');
     const gameScreen = document.querySelector('.gameplay');
     const musicBtn = document.getElementById('music-switch');
     const sfxBtn = document.getElementById('sfx-switch');
+    const mysteryBtn = document.getElementById('mysteryBtn');
 
     // lOAD IMAGES AND SOUNDS ONCE. NOT EACH TIME WE START NEW GAME
     // load the images. The background, and the food
     const ground = new Image();
     const foodImg = new Image();
-    ground.src = "./img/ground.png";
-    foodImg.src = "./img/food.png";
+    const NUM_IMAGES = 4;
+    var imageSelect = 0;
+
     // Load the audio files.
     const music = new Audio();
     const dead = new Audio();
@@ -41,8 +42,8 @@ const game = ()=> {
     // the render speed, the smaller the harder. Default 90 
     var DIFFICULTY = 90;
 
-    // Each difficulty will have a high score
-    var highScores = [0, 0, 0, 0];
+    // TODO: Each difficulty will have a high score
+    var highScores = [0, 0, 0, 0, 0];
     
     // Play/Pause music/sfx according to switch. Default is music/sfx ON.
     musicBtn.addEventListener('click', ()=> {
@@ -78,6 +79,11 @@ const game = ()=> {
         startGame();
     });
 
+    mysteryBtn.addEventListener('click', ()=>{
+        imageSelect++;
+        imageSelect %= NUM_IMAGES;
+    });
+
     function preGamePrep() {
         // Set the difficulty based on the selector
         let difficulty = document.getElementById('difficulty').options.selectedIndex;
@@ -87,15 +93,16 @@ const game = ()=> {
         else if (difficulty===3) DIFFICULTY = 70;
         else if (difficulty===4) DIFFICULTY = 50;
 
-        
+        // Change the colors each time we start the game
+        ground.src = `./img/ground${imageSelect}.png`;
+        foodImg.src = `./img/food${imageSelect}.png`;
     }
 
     // EACH TIME WE CLICK THE START BUTTON, THIS IS CALLED!
     function startGame() {
-
         const cvs = document.getElementById("snake");
         const ctx = cvs.getContext("2d");
-    
+
         // Our grid is 17 by 15. On our grid, each box is 32 pixels
         const GRID_X = 17;
         const GRID_Y = 15;
@@ -151,16 +158,17 @@ const game = ()=> {
     
         // draw everything to the canvas
         function draw () {
-            // Draw the ground
+            // Draw the ground and food at top corner
             ctx.drawImage(ground, 0, 0);
-    
+            ctx.drawImage(foodImg, 20, 20);
+            
             // Draw the snake
             for (let i = 0; i < snake.length; i++) {
                 // The head color snake[0], and tail color snake[everything but 0]
-                ctx.fillStyle = (i == 0) ? "black" : "cyan";
+                ctx.fillStyle = i == 0 ? "black" : "#DC6464";
                 ctx.fillRect(snake[i].x, snake[i].y, box, box);
     
-                ctx.strokeStyle = "blue";
+                ctx.strokeStyle = "#ff0000";
                 ctx.strokeRect(snake[i].x, snake[i].y, box, box);
             }
     
